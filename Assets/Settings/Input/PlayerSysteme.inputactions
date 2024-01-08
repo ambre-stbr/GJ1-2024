@@ -6,10 +6,10 @@
             "id": "b76ff98d-4c38-4d78-9731-3927ee50a469",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "Move",
                     "type": "Value",
                     "id": "06ca231a-11e0-4c59-a6ff-2fb26d477fb9",
-                    "expectedControlType": "Vector3",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -17,79 +17,57 @@
             ],
             "bindings": [
                 {
-                    "name": "ZQSD",
-                    "id": "c7b14839-410f-44a3-8a2f-048c828d939d",
-                    "path": "3DVector",
+                    "name": "2D Vector",
+                    "id": "f3f18990-c2a3-4c38-aa19-892cd99ee5bc",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "0d91983d-021f-4459-a657-1031ac10baf1",
-                    "path": "<Keyboard>/z",
+                    "id": "fb7d3f10-19b0-4b5f-b15f-542580b08d35",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "25fb1435-6c84-431b-b0fe-347f1857314e",
+                    "id": "4b1842fa-49ef-4323-8b10-3e792c3a3516",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "e08ce65e-1c71-475c-8cf9-c36d50bbfb2d",
-                    "path": "<Keyboard>/q",
+                    "id": "ec4597c1-4c40-4582-aa87-14e2ab89ae35",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "2749625d-364f-425b-9237-fe060d7b6520",
+                    "id": "40aad0b2-00e9-46fc-8276-541963b77ea9",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "forward",
-                    "id": "454b708e-ac0e-4096-b6e1-0ea56b5b328e",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "backward",
-                    "id": "ccc002f6-66bd-45b6-950e-1f4914d428a3",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Movement",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
