@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NavigationEnemy : MonoBehaviour
+public class NavigationMascotte : MonoBehaviour
 {
     private GameManager gameManager;
     private NavMeshAgent agent;
@@ -12,6 +12,7 @@ public class NavigationEnemy : MonoBehaviour
     public float attackDistance = 5f;
     private Vector3 wanderTarget = Vector3.zero;
     private bool isWandering = false;
+    private AnimationMascotte animationMascotte;
 
     void Start()
     {
@@ -25,12 +26,13 @@ public class NavigationEnemy : MonoBehaviour
 
         if (distanceToPlayer < sightRange)
         {
-            agent.SetDestination(player.position);
             if (distanceToPlayer < attackDistance)
             {
+                //animationMascotte.MascotteAnimationKidnappe();
                 Debug.Log("Attack Player");
                 gameManager.ShowGameOverScreen();
             }
+            else agent.SetDestination(player.position);
         }
         else
         {
@@ -66,6 +68,7 @@ public class NavigationEnemy : MonoBehaviour
 
         // Attendre pendant un certain temps après avoir atteint le point
         float waitTime = 3f; // Temps d'arrêt en secondes
+        //animationMascotte.MascotteAnimationIdle();
         yield return new WaitForSeconds(waitTime);
 
         isWandering = false;
