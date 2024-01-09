@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     {
         isPlaying = false;
 
-        Invoke(nameof(ShowGameOverScreen), 0.5f);
+        //Invoke(nameof(ShowGameOverScreen), 0.5f);
     }
     public void ShowGameOverScreen()
     {
