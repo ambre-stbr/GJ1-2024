@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 243698265}
   - component: {fileID: 243698264}
   m_Layer: 0
-  m_Name: GJ_Mascotte_
+  m_Name: GJ_Mascotte
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
