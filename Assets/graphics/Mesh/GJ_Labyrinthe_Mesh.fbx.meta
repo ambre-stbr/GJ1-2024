@@ -3,7 +3,27 @@ guid: 6f37261d3bbc2cd4db7130f4e59f6a75
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Carton MAt
+    second: {fileID: 2100000, guid: 643fe88cf17801a41ac62d12f4290309, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GL_Carrousel_Mat
+    second: {fileID: 2100000, guid: ba9646154f1822f44beb3d92a77c0f17, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GL_Carrousel_Mat.001
+    second: {fileID: 2100000, guid: ba9646154f1822f44beb3d92a77c0f17, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: e46a9fd9c52fad54a8a36cb2d0fe4c04, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
