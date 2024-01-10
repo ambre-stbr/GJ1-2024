@@ -6,15 +6,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     [SerializeField] private float speed = 5.0f;
     [SerializeField] private float sprintSpeed = 10.0f;
-    [SerializeField] private float sprintDuration = 5.0f;
-    [SerializeField] private float sprintCooldown = 5.0f;
-    private float sprintTimeRemaining;
-    private float sprintCooldownRemaining;
+    [SerializeField] private float maxSprintDuration = 5.0f;
+    [SerializeField] private float sprintRegenerationRate = 1.0f; // Régénère 1 seconde de sprint par seconde
+    private float sprintDurationRemaining;
     private bool isSprinting = false;
 
     void Start()
     {
-        sprintTimeRemaining = sprintDuration;
+        sprintDurationRemaining = maxSprintDuration;
     }
 
     void OnMove(InputValue value)
@@ -33,23 +32,25 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleSprint()
     {
-        if (sprintCooldownRemaining > 0)
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
         {
-            sprintCooldownRemaining -= Time.deltaTime;
-            return;
+            if (sprintDurationRemaining > 0)
+            {
+                isSprinting = true;
+                sprintDurationRemaining -= Time.deltaTime;
+            }
+            else
+            {
+                isSprinting = false; // Arrête de courir si le sprint est épuisé
+            }
         }
-
-        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && sprintTimeRemaining > 0)
-        {
-            isSprinting = true;
-            sprintTimeRemaining -= Time.deltaTime;
-        }
-        else if (isSprinting)
+        else
         {
             isSprinting = false;
-            sprintCooldownRemaining = sprintCooldown;
-            sprintTimeRemaining = sprintDuration;
+            if (sprintDurationRemaining < maxSprintDuration)
+            {
+                sprintDurationRemaining += sprintRegenerationRate * Time.deltaTime;
+            }
         }
     }
-
 }

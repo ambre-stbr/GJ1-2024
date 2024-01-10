@@ -248,8 +248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   sprintSpeed: 10
-  sprintDuration: 5
-  sprintCooldown: 5
+  maxSprintDuration: 5
+  sprintRegenerationRate: 1
 --- !u!114 &32587491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,7 +899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &613592947
 RectTransform:
   m_ObjectHideFlags: 0
