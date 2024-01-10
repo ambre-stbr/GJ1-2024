@@ -12,43 +12,10 @@ public class PlayerMovement : MonoBehaviour
     private float sprintCooldownRemaining;
     private bool isSprinting = false;
 
-
-    void OnMove(InputValue value)
+    void Start()
     {
-        movement = value.Get<Vector2>();
-        Debug.Log("OnMove !");
+        sprintTimeRemaining = sprintDuration;
     }
-
-    void Update()
-    {
-        if (Keyboard.current.shiftKey.isPressed && sprintTimeRemaining > 0)
-        {
-            isSprinting = true;
-            sprintTimeRemaining -= Time.deltaTime;
-        }
-        // Convertit le mouvement en direction relative à la rotation du joueur
-        Vector3 move = transform.right * movement.x + transform.forward * movement.y;
-
-        // Applique le mouvement sans changer la hauteur (axe Y)
-        transform.Translate(move * speed * Time.deltaTime, Space.World);
-
-    }
-}
-
-
-using UnityEngine;
-using UnityEngine.InputSystem;
-
-public class PlayerMovement : MonoBehaviour
-{
-    private Vector2 movement;
-    [SerializeField] private float speed = 5.0f;
-    [SerializeField] private float sprintSpeed = 10.0f;
-    [SerializeField] private float sprintDuration = 5.0f;
-    [SerializeField] private float sprintCooldown = 5.0f;
-    private float sprintTimeRemaining;
-    private float sprintCooldownRemaining;
-    private bool isSprinting = false;
 
     void OnMove(InputValue value)
     {
@@ -72,20 +39,17 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if (Keyboard.current.shiftKey.isPressed && sprintTimeRemaining > 0)
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && sprintTimeRemaining > 0)
         {
             isSprinting = true;
             sprintTimeRemaining -= Time.deltaTime;
         }
-        else
+        else if (isSprinting)
         {
-            if (isSprinting)
-            {
-                sprintCooldownRemaining = sprintCooldown;
-                sprintTimeRemaining = sprintDuration;
-            }
-
             isSprinting = false;
+            sprintCooldownRemaining = sprintCooldown;
+            sprintTimeRemaining = sprintDuration;
         }
     }
+
 }
