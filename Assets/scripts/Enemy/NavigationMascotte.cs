@@ -41,7 +41,7 @@ public class NavigationMascotte : MonoBehaviour
             if (distanceToPlayer < attackDistance)
             {
                 //animationMascotte.MascotteAnimationKidnappe();
-                Debug.Log("Attack Player");
+                //Debug.Log("Attack Player");
                 gameManager.ShowGameOverScreen();
             }
         }
@@ -52,21 +52,27 @@ public class NavigationMascotte : MonoBehaviour
             {
                 timeToChangeDestination = Time.time + idleTime;
                 Vector3 randomPosition = RandomPositionInPlayArea();
-                Debug.Log("randomPosition = " + randomPosition);
+                //Debug.Log("randomPosition = " + randomPosition);
                 if (NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
                 {
                     agent.SetDestination(hit.position);
-                    Debug.Log("SetDestination = " + randomPosition);
+                    //Debug.Log("SetDestination = " + randomPosition);
                 }
-                Debug.Log("timeToChangeDestination = " + timeToChangeDestination);
+                //Debug.Log("timeToChangeDestination = " + timeToChangeDestination);
             }
+        }
+
+        // Faire tourner le personnage vers la direction où il marche
+        if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
         }
 
         Vector3 RandomPositionInPlayArea()
         {
             return new Vector3(
                 Random.Range(playArea.minX, playArea.maxX),
-                transform.position.y, // Gardez la hauteur actuelle de la mascotte
+                0,
                 Random.Range(playArea.minZ, playArea.maxZ)
             );
         }
