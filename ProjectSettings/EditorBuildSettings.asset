@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeadMenu.unity
     guid: 49d9e8123eb6c448d9300764c706a413
+  - enabled: 1
+    path: Assets/Scenes/EscapeMenu.unity
+    guid: fce4bcce48d4e544f858e28452788801
   m_configObjects: {}
