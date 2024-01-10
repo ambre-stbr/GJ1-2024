@@ -224,6 +224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  sprintSpeed: 10
+  sprintDuration: 5
+  sprintCooldown: 5
 --- !u!114 &32587491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +424,12 @@ MonoBehaviour:
   player: {fileID: 32587489}
   sightRange: 10
   attackDistance: 5
+  idleTime: 3
+  playArea:
+    minX: 0
+    maxX: 0
+    minZ: 0
+    maxZ: 0
 --- !u!136 &111780463
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -875,6 +884,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &901623037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.287467
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5.96
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
+      propertyPath: m_Name
+      value: GJ_arcEnCiel_mesh
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 132dde242b753f3478b4ac61f86adeaf, type: 3}
 --- !u!1 &970792630 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8391222552659086748, guid: 3c06cdeacebd0ff4a984f81f5d747986, type: 3}
@@ -1795,3 +1861,4 @@ SceneRoots:
   - {fileID: 351835220}
   - {fileID: 1562545778}
   - {fileID: 2044574599}
+  - {fileID: 901623037}
