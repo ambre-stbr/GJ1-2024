@@ -10,9 +10,19 @@ public class NavigationMascotte : MonoBehaviour
     public Transform player;
     public float sightRange = 10f;
     public float attackDistance = 5f;
-    private Vector3 wanderTarget = Vector3.zero;
-    private bool isWandering = false;
+    private float timeToChangeDestination = 0;
+    public float idleTime = 3;
     private AnimationMascotte animationMascotte;
+
+    [System.Serializable]
+    public struct PlayArea
+    {
+        public float minX;
+        public float maxX;
+        public float minZ;
+        public float maxZ;
+    }
+    public PlayArea playArea;
 
     void Start()
     {
@@ -24,53 +34,41 @@ public class NavigationMascotte : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
+        // Vérification constante de la proximité du joueur
         if (distanceToPlayer < sightRange)
         {
+            agent.SetDestination(player.position);
             if (distanceToPlayer < attackDistance)
             {
                 //animationMascotte.MascotteAnimationKidnappe();
                 Debug.Log("Attack Player");
                 gameManager.ShowGameOverScreen();
             }
-            else agent.SetDestination(player.position);
         }
         else
         {
-            if (!isWandering)
+            // Logique de déplacement aléatoire
+            if (timeToChangeDestination <= Time.time)
             {
-                StartCoroutine(Wander());
+                timeToChangeDestination = Time.time + idleTime;
+                Vector3 randomPosition = RandomPositionInPlayArea();
+                Debug.Log("randomPosition = " + randomPosition);
+                if (NavMesh.SamplePosition(randomPosition, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
+                {
+                    agent.SetDestination(hit.position);
+                    Debug.Log("SetDestination = " + randomPosition);
+                }
+                Debug.Log("timeToChangeDestination = " + timeToChangeDestination);
             }
         }
-    }
 
-    IEnumerator Wander()
-    {
-        isWandering = true;
-
-        float wanderRadius = 10f;
-        float wanderDistance = 10f;
-        float wanderJitter = 1f;
-
-        wanderTarget += new Vector3(Random.Range(-1.0f, 1.0f) * wanderJitter, 0, Random.Range(-1.0f, 1.0f) * wanderJitter);
-        wanderTarget.Normalize();
-        wanderTarget *= wanderRadius;
-
-        Vector3 targetLocal = wanderTarget + new Vector3(0, 0, wanderDistance);
-        Vector3 targetWorld = transform.TransformPoint(targetLocal);
-
-        agent.SetDestination(targetWorld);
-
-        // Attendre jusqu'à ce que l'ennemi atteigne le point cible
-        while (Vector3.Distance(transform.position, targetWorld) > agent.stoppingDistance)
+        Vector3 RandomPositionInPlayArea()
         {
-            yield return null;
+            return new Vector3(
+                Random.Range(playArea.minX, playArea.maxX),
+                transform.position.y, // Gardez la hauteur actuelle de la mascotte
+                Random.Range(playArea.minZ, playArea.maxZ)
+            );
         }
-
-        // Attendre pendant un certain temps après avoir atteint le point
-        float waitTime = 3f; // Temps d'arrêt en secondes
-        //animationMascotte.MascotteAnimationIdle();
-        yield return new WaitForSeconds(waitTime);
-
-        isWandering = false;
     }
 }
