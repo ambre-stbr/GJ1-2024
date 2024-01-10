@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimationEnemy : MonoBehaviour
+public class AnimationMascotte : MonoBehaviour
 {
     private Vector3 velocity;
     private Vector3 lastPosition;
@@ -21,20 +21,31 @@ public class AnimationEnemy : MonoBehaviour
 
         lastPosition = transform.position;
 
-        if (velocity.magnitude >= 0.1)
+        if (velocity.magnitude <= 0.2)
         {
-            animator.SetBool("run", true);
+            MascotteAnimationIdle();
         }
         else
         {
-            animator.SetBool("run", false);
+            animator.SetBool("Idle", false);
+            animator.SetBool("Idle2", false);
+
         }
     }
 
-    public void MascotteAnimationAttack()
+    public void MascotteAnimationKidnappe()
     {
-        animator.SetTrigger("attack");
+        animator.SetTrigger("Kidnappe");
 
-        //Debug.Log("MascotteAnimationAttack !");
+        Debug.Log("MascotteAnimationKidnappe !");
     }
+    public void MascotteAnimationIdle()
+    {
+        float n = Random.Range(-1, 1);
+        if (n >= 0) { animator.SetBool("Idle", true); }
+        else animator.SetBool("Idle2", true);
+
+        Debug.Log("MascotteAnimationIdle !");
+    }
+
 }
