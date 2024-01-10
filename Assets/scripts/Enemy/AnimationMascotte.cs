@@ -16,7 +16,21 @@ public class AnimationMascotte : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
-        
+        Vector3 deltaPosition = transform.position - lastPosition;
+        velocity = deltaPosition / Time.deltaTime;
+
+        lastPosition = transform.position;
+
+        if (velocity.magnitude <= 0.2)
+        {
+            MascotteAnimationIdle();
+        }
+        else
+        {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Idle2", false);
+
+        }
     }
 
     public void MascotteAnimationKidnappe()
@@ -28,8 +42,8 @@ public class AnimationMascotte : MonoBehaviour
     public void MascotteAnimationIdle()
     {
         float n = Random.Range(-1, 1);
-        if (n >= 0) {animator.SetTrigger("Idle");} 
-        else  animator.SetTrigger("Idle2");
+        if (n >= 0) { animator.SetBool("Idle", true); }
+        else animator.SetBool("Idle2", true);
 
         Debug.Log("MascotteAnimationIdle !");
     }
