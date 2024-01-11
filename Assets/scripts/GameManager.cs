@@ -48,10 +48,20 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         isGamePaused = true;
+
+        // Rendre le curseur visible
+        Cursor.visible = true;
+
+        // Déverrouiller le curseur pour permettre au joueur de l'utiliser dans l'UI
+        Cursor.lockState = CursorLockMode.None;
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
         isGamePaused = false;
+
+        // Cachez le curseur et le verrouillez
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

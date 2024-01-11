@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class MenuManager : MonoBehaviour
 {
+
     public string LevelToLoad;
+
 
     public void Play()
     {
